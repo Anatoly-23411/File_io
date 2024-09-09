@@ -3,6 +3,7 @@ from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 from tkinter import ttk
 import requests
+import pyperclip
 # from PyInstaller.loader.pyiboot01_bootstrap import entry
 # from Scripts.Cripta import window
 # from bottle import response, request
@@ -19,6 +20,8 @@ def upload():
                 link = response.json()["link"]
                 entry.delete(0, END)
                 entry.insert(0, link)
+                pyperclip.copy(link)
+                mb.showinfo("Ссылка скопирована",  f"Ссылка {link} успешно скопирована в буфер обмена")
     except Exception as e:
         mb.showerror("Ошибка", f"Произошла ошибка: {e}")
 
